@@ -4,7 +4,9 @@ import AddTutorial from "../components/AddTutorial";
 import axios from "axios";
 
 const Home = () => {
-  const [apiData, setApiData] = useState();
+    //! Şayet TutorialList de can not read map derse buradan USESTATE in initial değerini [] veya () şeklinde yapmak gerekir.
+  const [apiData, setApiData] = useState([]);
+
 
   const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
 
@@ -25,11 +27,11 @@ const Home = () => {
   }, []);
 
   /*  console.log(apiData);  */
-  
+
   return (
     <div>
       <AddTutorial />
-      <TutorialList />
+      <TutorialList apiData={apiData} />
     </div>
   );
 };
