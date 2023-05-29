@@ -3,7 +3,8 @@ import React from "react";
 const EditTutorial = () => {
   return (
     <div>
-      <div className="modal" tabIndex="-1">
+      {/* Modal sayfasında en üstteki DiV e id eklemeliyiz ve bu id yi kullanacağımız yerde yazmalıyız.Yani AiFillEdit simgesine .  */}
+      <div className="modal" tabIndex="-1" id="modal-id">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
