@@ -2,7 +2,7 @@ import React from "react";
 import { ImBin } from 'react-icons/im'; 
 import { AiFillEdit } from 'react-icons/ai';
 
-const TutorialList = ({ apiData }) => {
+const TutorialList = ({ apiData ,delData}) => {
     /* console.log(apiData); */
   return (
     <div>
@@ -23,7 +23,7 @@ const TutorialList = ({ apiData }) => {
                 <th scope="row">{id} </th>
                 <td>{title} </td>
                 <td>{description} </td>
-                <td > <AiFillEdit className="text-warning me-3" size={25}/> <ImBin className="text-danger" size={25}/>  </td>
+                <td > <AiFillEdit className="text-warning me-3" size={25}/> <ImBin onClick={()=> delData(id)} className="text-danger" size={25}/>  </td>
               </tr>
             );
           })}

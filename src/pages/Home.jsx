@@ -27,6 +27,7 @@ const Home = () => {
 
   /*  console.log(apiData);  */
 
+  //! POST (create işlemi)
   const postUrl = async (addTitle, addDescription) => {
     /* console.log(addTitle,addDescription); */
     try {
@@ -42,10 +43,21 @@ const Home = () => {
     getUrl();
   };
 
+  //! DELETE (delete) işlemi  tutorials/:id
+  const delData = async (selectId) => {
+    try {
+      await axios.delete(`${url}${selectId}/`);
+    } catch (error) {
+      console.log(error);
+    }
+
+    getUrl();
+  };
+
   return (
     <div>
       <AddTutorial postUrl={postUrl} />
-      <TutorialList apiData={apiData} />
+      <TutorialList apiData={apiData} delData={delData} />
     </div>
   );
 };
