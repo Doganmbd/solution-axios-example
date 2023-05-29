@@ -16,19 +16,35 @@ const EditTutorial = () => {
                 aria-label="Close"
               ></button>
             </div>
+
             <div className="modal-body">
-              <p>Modal body text goes here.</p>
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="title" className="form-label">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="title"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="desc" className="form-label">
+                    Description
+                  </label>
+                  <input type="text" className="form-control" id="desc" />
+                </div>
+              </form>
             </div>
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-primary"
                 data-bs-dismiss="modal"
               >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
+                SAVE
               </button>
             </div>
           </div>
