@@ -54,6 +54,15 @@ const Home = () => {
     getUrl();
   };
 
+
+  //! EDİT işlemi (update) POST veya PATCH
+
+  const putUrl = async()=> {
+    
+
+}
+
+
   return (
     <div>
       <AddTutorial postUrl={postUrl} />
