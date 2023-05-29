@@ -3,11 +3,17 @@ import React, { useState } from "react";
 const AddTutorial = () => {
   const [addTitle, setAddTitle] = useState("");
   const [addDescription, setAddDescription] = useState("");
-/*   console.log(addTitle);
+  /*   console.log(addTitle);
   console.log(addDescription); */
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div>
-      <form>
+    <div className="fs-5 fw-bold">
+        <h1 className="text-center text-danger mb-5">ADD TUTORIAL LIST PROJECT</h1>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title
@@ -33,7 +39,7 @@ const AddTutorial = () => {
             value={addDescription}
           />
         </div>
-        <div className="mb-5 text-center">
+        <div className="m-5 text-center">
           <button type="submit" className="btn btn-primary  text-center">
             Submit
           </button>
