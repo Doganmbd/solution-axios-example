@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const EditTutorial = () => {
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalDesc, setModalDesc] = useState("");
   return (
     <div>
       {/* Modal sayfasında en üstteki DiV e id eklemeliyiz ve bu id yi kullanacağımız yerde yazmalıyız.Yani AiFillEdit simgesine .  */}
@@ -28,13 +30,17 @@ const EditTutorial = () => {
                     className="form-control"
                     id="title"
                     aria-describedby="emailHelp"
+                    value={modalTitle}
+                    onChange={(e)=> {setModalTitle(e.target.value)}}
                   />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="desc" className="form-label">
                     Description
                   </label>
-                  <input type="text" className="form-control" id="desc" />
+                  <input type="text" className="form-control" id="desc"
+                  value={modalDesc}
+                  onChange={(e)=> {setModalDesc(e.target.value)}} />
                 </div>
               </form>
             </div>
