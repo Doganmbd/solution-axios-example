@@ -54,19 +54,32 @@ const Home = () => {
     getUrl();
   };
 
+  //! EDİT işlemi (update) PUT veya PATCH
 
-  //! EDİT işlemi (update) POST veya PATCH
+  const putUrl = async (putId , putTİtle , putDescription) => {
+    try {
+          await axios.put(`${url}${putId}/`, {
+      title: putTİtle,
+      description: putDescription,
+    });
+/*           await axios.patch(`${url}${putId}/`, {
+      title: putTİtle,
+      description: putDescription,
+    }); */
 
-  const putUrl = async()=> {
-    
+    } catch (error) {
+      console.log(error);
+    }
 
-}
+    getUrl();
+  };
+
 
 
   return (
     <div>
       <AddTutorial postUrl={postUrl} />
-      <TutorialList apiData={apiData} delData={delData} />
+      <TutorialList apiData={apiData} delData={delData} putUrl={putUrl}/>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { ImBin } from "react-icons/im";
 import { AiFillEdit } from "react-icons/ai";
 import EditTutorial from "./EditTutorial";
 
-const TutorialList = ({ apiData, delData }) => {
+const TutorialList = ({ apiData, delData,putUrl }) => {
   /* console.log(apiData);  */
 
   const [editData, setEditData] = useState("")
@@ -46,7 +46,7 @@ const TutorialList = ({ apiData, delData }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial editData={editData}/>
+      <EditTutorial editData={editData} putUrl={putUrl}/>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const EditTutorial = ({ editData }) => {
+const EditTutorial = ({ editData ,putUrl}) => {
   console.log(editData);
-  const { title, description } = editData;
+  const {id, title, description } = editData;
   console.log(title, description);
 
   const [modalTitle, setModalTitle] = useState(title);
@@ -74,6 +74,7 @@ const EditTutorial = ({ editData }) => {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
+                onClick={()=>putUrl(id,modalTitle, modalDesc)}
               >
                 SAVE
               </button>
