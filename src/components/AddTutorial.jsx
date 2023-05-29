@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddTutorial = () => {
+const AddTutorial = ({ postUrl }) => {
   const [addTitle, setAddTitle] = useState("");
   const [addDescription, setAddDescription] = useState("");
   /*   console.log(addTitle);
@@ -8,11 +8,16 @@ const AddTutorial = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    postUrl(addTitle, addDescription);
+    setAddTitle("");
+    setAddDescription("");
   };
 
   return (
     <div className="fs-5 fw-bold">
-        <h1 className="text-center text-danger mb-5">ADD TUTORIAL LIST PROJECT</h1>
+      <h1 className="text-center text-danger mb-5">
+        ADD TUTORIAL LIST PROJECT
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">

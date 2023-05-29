@@ -4,9 +4,8 @@ import AddTutorial from "../components/AddTutorial";
 import axios from "axios";
 
 const Home = () => {
-    //! Şayet TutorialList de can not read map derse buradan USESTATE in initial değerini [] veya () şeklinde yapmak gerekir.
+  //! Şayet TutorialList de can not read map derse buradan USESTATE in initial değerini [] veya () şeklinde yapmak gerekir.
   const [apiData, setApiData] = useState([]);
-
 
   const url = "https://tutorial-api.fullstack.clarusway.com/tutorials/";
 
@@ -21,16 +20,31 @@ const Home = () => {
     }
   };
 
-  //! UseState içine URL den gellen verileri gönderdiğim için sürekli render işlemi olmaması için USEEFFECT kullanarak MOUNTED yaptım. 
+  //! UseState içine URL den gellen verileri gönderdiğim için sürekli render işlemi olmaması için USEEFFECT kullanarak MOUNTED yaptım.
   useEffect(() => {
     getUrl();
   }, []);
 
   /*  console.log(apiData);  */
 
+  const postUrl = async (addTitle, addDescription) => {
+    /* console.log(addTitle,addDescription); */
+    try {
+      await axios.post(url, {
+        title: addTitle,
+        description: addDescription,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    //! POST ile gönderdiğim veriyi GET ile çekiyorum ki ekranda görebileyim.
+    getUrl();
+  };
+
   return (
     <div>
-      <AddTutorial />
+      <AddTutorial postUrl={postUrl} />
       <TutorialList apiData={apiData} />
     </div>
   );
