@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const EditTutorial = () => {
-    const [modalTitle, setModalTitle] = useState("");
-    const [modalDesc, setModalDesc] = useState("");
+const EditTutorial = ({ editData }) => {
+  console.log(editData);
+  const { title, description } = editData;
+  console.log(title, description);
+
+  const [modalTitle, setModalTitle] = useState(title);
+  const [modalDesc, setModalDesc] = useState(description);
+
+  //? https://reactjs.org/docs/hooks-reference.html#usestate
+  //! State degiskeninin degeri, 1.render ile initialState parametresinin ilk degerini alir. Dolayisiyle bu durumda prop'tan gelen ilk deger state'e aktarilir.
+  //! Sonradan degisen props degerleri useState'e aktarilmaz.
+  //! Eger props'tan gelen degerleri her degisimde useState'e aktarmak istersek useEffect hook'unu componentDidUpdate gibi kullanabiriz.
+
+  //? title veya description her degistiginde local modalTitle ve modalDesc state'lerimizi gunceliyoruz.
+  //! componentDidUpdate
+  useEffect(() => {
+    setModalTitle(title);
+    setModalDesc(description);
+  }, [title, description]);
+
   return (
     <div>
       {/* Modal sayfasında en üstteki DiV e id eklemeliyiz ve bu id yi kullanacağımız yerde yazmalıyız.Yani AiFillEdit simgesine .  */}
@@ -30,17 +47,25 @@ const EditTutorial = () => {
                     className="form-control"
                     id="title"
                     aria-describedby="emailHelp"
-                    value={modalTitle}
-                    onChange={(e)=> {setModalTitle(e.target.value)}}
+                    value={modalTitle || ""}
+                    onChange={(e) => {
+                      setModalTitle(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="desc" className="form-label">
                     Description
                   </label>
-                  <input type="text" className="form-control" id="desc"
-                  value={modalDesc}
-                  onChange={(e)=> {setModalDesc(e.target.value)}} />
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="desc"
+                    value={modalDesc || ""}
+                    onChange={(e) => {
+                      setModalDesc(e.target.value);
+                    }}
+                  />
                 </div>
               </form>
             </div>

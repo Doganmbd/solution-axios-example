@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImBin } from "react-icons/im";
 import { AiFillEdit } from "react-icons/ai";
 import EditTutorial from "./EditTutorial";
 
 const TutorialList = ({ apiData, delData }) => {
-  /* console.log(apiData); */
+  /* console.log(apiData);  */
+
+  const [editData, setEditData] = useState("")
+
   return (
     <div>
       <table className="table">
@@ -30,6 +33,7 @@ const TutorialList = ({ apiData, delData }) => {
                     data-bs-target="#modal-id"
                     className="text-warning me-3"
                     size={25}
+                    onClick={()=> {setEditData(items)}}
                   />
                   <ImBin
                     onClick={() => delData(id)}
@@ -42,7 +46,7 @@ const TutorialList = ({ apiData, delData }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial />
+      <EditTutorial editData={editData}/>
     </div>
   );
 };
