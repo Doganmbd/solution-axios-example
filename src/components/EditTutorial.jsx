@@ -20,6 +20,13 @@ const EditTutorial = ({ editData ,putUrl}) => {
     setModalDesc(description);
   }, [title, description]);
 
+/*   const handleSave = (e) => {
+    e.preventDefault();
+    putUrl(id, modalTitle, modalDesc);
+    setModalTitle('');
+    setModalDesc('');
+  }; */
+
   return (
     <div>
       {/* Modal sayfasında en üstteki DiV e id eklemeliyiz ve bu id yi kullanacağımız yerde yazmalıyız.Yani AiFillEdit simgesine .  */}

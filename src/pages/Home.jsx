@@ -21,6 +21,7 @@ const Home = () => {
   };
 
   //! UseState içine URL den gellen verileri gönderdiğim için sürekli render işlemi olmaması için USEEFFECT kullanarak MOUNTED yaptım.
+  //? Sadece Component mount oldugunda istek yapar
   useEffect(() => {
     getUrl();
   }, []);
@@ -32,6 +33,7 @@ const Home = () => {
     /* console.log(addTitle,addDescription); */
     try {
       await axios.post(url, {
+        /* Diğer tarafta obje olarak gönderip buradada yakalayabiliriz ama ben burada obje şekline dönüştürmeyi tercih ettim. */
         title: addTitle,
         description: addDescription,
       });
@@ -56,17 +58,16 @@ const Home = () => {
 
   //! EDİT işlemi (update) PUT veya PATCH
 
-  const putUrl = async (putId , putTİtle , putDescription) => {
+  const putUrl = async (putId, putTİtle, putDescription) => {
     try {
-          await axios.put(`${url}${putId}/`, {
-      title: putTİtle,
-      description: putDescription,
-    });
-/*           await axios.patch(`${url}${putId}/`, {
+      await axios.put(`${url}${putId}/`, {
+        title: putTİtle,
+        description: putDescription,
+      });
+      /*           await axios.patch(`${url}${putId}/`, {
       title: putTİtle,
       description: putDescription,
     }); */
-
     } catch (error) {
       console.log(error);
     }
@@ -74,12 +75,10 @@ const Home = () => {
     getUrl();
   };
 
-
-
   return (
     <div>
       <AddTutorial postUrl={postUrl} />
-      <TutorialList apiData={apiData} delData={delData} putUrl={putUrl}/>
+      <TutorialList apiData={apiData} delData={delData} putUrl={putUrl} />
     </div>
   );
 };
